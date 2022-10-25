@@ -43,7 +43,9 @@ public abstract class SongStructureBase implements SongStructure {
     }
 
     protected String getNextRandomPhrase() {
-        return specialPhrasesForEachVerse.get(lastSpecialPhrase++);
+        String result = specialPhrasesForEachVerse.get(lastSpecialPhrase);
+        lastSpecialPhrase = (lastSpecialPhrase + 1) % this.specialPhrasesForEachVerse.size();
+        return result;
     }
 
     protected abstract void configureRandomPhrases();

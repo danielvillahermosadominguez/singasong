@@ -31,7 +31,9 @@ public class SongComposer {
         String result = createFirstPhrase(actors);
         Actor firstActor = actors.getFirst();
         Actor lastActor = actors.getLast();
-        result += String.format(structure.getDifferentPhrase(), lastActor.getName());
+        if(actors.size() > 1) {
+            result += String.format(structure.getDifferentPhrase(), lastActor.getName());
+        }
         result += createBody(actors);
         result += String.format(structure.getEndOfVerse(), firstActor.getName());
         return result;

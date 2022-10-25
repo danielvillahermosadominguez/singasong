@@ -3,7 +3,6 @@ package org.example;
 public class SongStructureChildrenSong extends SongStructureBase {
     @Override
     protected void configureRandomPhrases() {
-        addSpecialPhraseForEachVerse("");
         addSpecialPhraseForEachVerse("That wriggled and wiggled and tickled inside her.\n");
         addSpecialPhraseForEachVerse("How absurd to swallow a %s.\n");
         addSpecialPhraseForEachVerse("Fancy that to swallow a %s!\n");
