@@ -6,37 +6,37 @@ import java.util.List;
 class Song {
     private final SongPrinter printer;
     private final SongStructure structure;
-    private List<String> animals;
+    private List<String> items;
 
-    public Song(List<String> animals, SongPrinter printer, SongStructure structure) {
-        this.animals = animals;
+    public Song(List<String> items, SongPrinter printer, SongStructure structure) {
+        this.items = items;
         this.printer = printer;
         this.structure = structure;
     }
 
     public void Play() {
         String song = create();
-
         printer.print(song);
     }
 
     private String create() {
-        List<String> animalsInTheVerse = new ArrayList<>();
+        List<String> itemsInTheVerse = new ArrayList<>();
         String song = "";
-        for (int animalOrder = 0; animalOrder < animals.size() - 1; animalOrder++) {
-            animalsInTheVerse.add(animals.get(animalOrder));
-            song += createVerse(animalsInTheVerse, animalOrder);
+        for (int itemOrder = 0; itemOrder < items.size() - 1; itemOrder++) {
+            String item = items.get(itemOrder);
+            itemsInTheVerse.add(item);
+            song += createVerse(itemsInTheVerse);
         }
-        song += createFinalVerse(animals);
+        song += createFinalVerse(items);
         return song;
     }
 
 
-    private String createVerse(List<String> animals, int lastAnimal) {
-        String result = createFirstPhrase(animals);
-        result += String.format(structure.getDifferentPhrase(lastAnimal), animals.get(animals.size() - 1));
-        result += createBody(animals);
-        result += String.format(structure.getEndOfVerse(), animals.get(0));
+    private String createVerse(List<String> items) {
+        String result = createFirstPhrase(items);
+        result += String.format(structure.getDifferentPhrase(), items.get(items.size() - 1));
+        result += createBody(items);
+        result += String.format(structure.getEndOfVerse(), items.get(0));
         return result;
     }
 
@@ -45,7 +45,7 @@ class Song {
         for (int animalOrder = animals.size() - 1; animalOrder > 0; animalOrder--) {
             String animal = animals.get(animalOrder);
             String secondAnimal = animals.get(animalOrder - 1);
-            result += String.format(structure.getRefrainTemplate(), animal, secondAnimal, (animalOrder == 1 ? ";" : ","));
+            result += String.format(structure.getRefrainOfTheVerse(), animal, secondAnimal, (animalOrder == 1 ? ";" : ","));
         }
         return result;
     }
@@ -53,10 +53,10 @@ class Song {
     private String createFirstPhrase(List<String> animals) {
         String animal = animals.get(animals.size() - 1);
         String endline = animals.size() == 1 ? "." : ";";
-        return structure.getFirstPhrase(animal, endline);
+        return String.format(structure.getFirstPhrase(),animal, endline);
     }
 
-    protected String createFinalVerse(List<String> animals) {
+    private String createFinalVerse(List<String> animals) {
         String animal = animals.get(animals.size() - 1);
         return String.format(structure.getFinalPhrase(), animal);
     }

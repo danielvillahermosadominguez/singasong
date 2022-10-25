@@ -74,7 +74,7 @@ public class SongShould {
     @Test
     void return_RN_when_original_song_is_printed() {
         SongPrinter printer = new SongPrinter();
-        SongStructure structure = new SongStructure();
+        SongStructureChildrenSong structure = new SongStructureChildrenSong();
         List<String> animals = Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse");
         Song song = new Song(animals, printer,structure);
         song.Play();
