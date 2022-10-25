@@ -70,51 +70,12 @@ public class SongShould {
         System.setErr(originalErr);
     }
 
-    @Test
-    void return_a_empty_string_when_the_screen_is_clean() {
-        assertEquals("", outContent.toString());
-    }
-
-    @Test
-    void return_a_RN_when_an_empty_value_is_written() {
-        Song song = new Song(Arrays.asList());
-        song.print("");
-        assertEquals("\r\n", outContent.toString());
-    }
-
-    @Test
-    void return_a_character_RN_when_a_character_is_written() {
-        Song song = new Song(Arrays.asList());
-        song.print("a");
-        assertEquals("a\r\n", outContent.toString());
-    }
-
-    @Test
-    void return_RN_when_a_newline_is_written() {
-        Song song = new Song(Arrays.asList());
-        song.print("\n");
-        assertEquals("\n\r\n", outContent.toString());
-    }
-
-    @Test
-    void return_RN_when_a_phrase_with_a_new_line() {
-        Song song = new Song(Arrays.asList());
-        song.print("There was an old lady who swallowed a fly.\n");
-        assertEquals("There was an old lady who swallowed a fly.\n\r\n", outContent.toString());
-    }
-
-    @Test
-    void return_RN_when_a_phrase_with_two_new_lines() {
-        Song song = new Song(Arrays.asList());
-        song.print("I don't know why she swallowed a fly - perhaps she'll die!\n" + "\n");
-        assertEquals("I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n\r\n", outContent.toString());
-    }
 
     @Test
     void return_RN_when_original_song_is_printed() {
+        SongPrinter printer = new SongPrinter();
         List<String> animals = Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse");
-        Song song = new Song(animals);
+        Song song = new Song(animals, printer);
         song.create();
         assertEquals(expected_full_song + "\r\n", outContent.toString());
     }
