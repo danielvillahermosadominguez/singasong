@@ -21,5 +21,15 @@ Image by Egga. It shows an exemplary flip chart to facilitate the kata.
 
 NOTA: 
 
-Una vez partido en estructura, printer y song. 
-Deberiamos generalizar estructura y empezar a generalizar Song.
+La idea ahora sería tratar de refactorizar sustituyendo primitivas
+por objetos. Apliquemos Calistemia.
+
+Y además simplificar el codigo si es posible.
+
+Siguientes pasos, hacer TDD para evolucionarlo y para que pueda aceptar 
+todo tipo de animales.
+
+Ver si podemos aplicar patrones.
+
+Por último crear una canción con una estructura distinta y
+un programa que permita de forma interactiva generar canciones.

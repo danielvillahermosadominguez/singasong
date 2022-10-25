@@ -70,14 +70,18 @@ public class SongShould {
         System.setErr(originalErr);
     }
 
-
     @Test
     void return_RN_when_original_song_is_printed() {
+        //Arrange
         SongPrinter printer = new SongPrinter();
         SongStructureChildrenSong structure = new SongStructureChildrenSong();
-        List<String> animals = Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse");
+        ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse"));
         Song song = new Song(animals, printer,structure);
+
+        //Act
         song.Play();
+
+        //Assert
         assertEquals(expected_full_song + "\r\n", outContent.toString());
     }
 }
