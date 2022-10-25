@@ -16,3 +16,7 @@ https://github.com/sleepyfox/code-dojo-39
 
 # Image credits
 Image by Egga. It shows an exemplary flip chart to facilitate the kata.
+
+
+
+NOTA: Refactorizando Song
