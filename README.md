@@ -19,4 +19,7 @@ Image by Egga. It shows an exemplary flip chart to facilitate the kata.
 
 
 
-NOTA: Refactorizando Song
+NOTA: 
+
+Una vez partido en estructura, printer y song. 
+Deberiamos generalizar estructura y empezar a generalizar Song.
