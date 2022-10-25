@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,21 +15,22 @@ class Song {
         String dog = "dog";
         String cow = "cow";
         String horse = "horse";
+        List<String> animals = Arrays.asList(fly, spider, bird, cat, dog, cow);
+        List<String> randomPhrases = new ArrayList<>();
+        randomPhrases.add("");
+        randomPhrases.add("That wriggled and wiggled and tickled inside her.\n");
+        randomPhrases.add("How absurd to swallow a " + animals.get(2) + ".\n");
+        randomPhrases.add("Fancy that to swallow a " + animals.get(3) + "!\n");
+        randomPhrases.add("What a hog, to swallow a " + animals.get(4) + "!\n");
+        randomPhrases.add("I don't know how she swallowed a " + animals.get(5) + "!\n");
 
-        String firstVerse = createVerse(Arrays.asList(fly), "", ".");
-        String secondVerse = createVerse(Arrays.asList(fly, spider), "That wriggled and wiggled and tickled inside her.\n", ";");
-        String thirdVerse = createVerse(Arrays.asList(fly, spider, bird), "How absurd to swallow a " + Arrays.asList(fly, spider, bird).get(2) + ".\n", ";");
-        String fourthVerse = createVerse(Arrays.asList(fly, spider, bird, cat), "Fancy that to swallow a " + Arrays.asList(fly, spider, bird, cat).get(3) + "!\n", ";");
-        String fifthVerse = createVerse(Arrays.asList(fly, spider, bird, cat, dog), "What a hog, to swallow a " + Arrays.asList(fly, spider, bird, cat, dog).get(4) + "!\n", ";");
-        String sixthVerse = createVerse(Arrays.asList(fly, spider, bird, cat, dog, cow), "I don't know how she swallowed a " + Arrays.asList(fly, spider, bird, cat, dog, cow).get(5) + "!\n", ";");
-        String finalVerse = getFinalVerse(Arrays.asList(horse));
-        String song = firstVerse +
-                secondVerse +
-                thirdVerse +
-                fourthVerse +
-                fifthVerse +
-                sixthVerse +
-                finalVerse;
+        List<String> animalsInTheVerse = new ArrayList<>();
+        String song = "";
+        for(int i = 0;i< animals.size();i++) {
+            animalsInTheVerse.add(animals.get(i));
+            song += createVerse(animalsInTheVerse, randomPhrases.get(i), animalsInTheVerse.size() == 1 ? ".":";");
+        }
+        song+= getFinalVerse(Arrays.asList(horse));
 
         print(song);
     }
