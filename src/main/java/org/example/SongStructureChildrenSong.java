@@ -1,9 +1,6 @@
 package org.example;
 
 public class SongStructureChildrenSong extends SongStructureBase {
-
-    private String endOfVerse;
-
     @Override
     protected void configureRandomPhrases() {
         addSpecialPhraseForEachVerse("");

@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,15 +12,6 @@ public class ActorsList {
         for (String text : actors) {
             this.actors.add(new Actor(text));
         }
-    }
-
-    public ActorsList getAListWithTheFirst() {
-        if (actors.size() == 0) {
-            return null;
-        }
-
-        Actor firstActor = actors.get(0);
-        return new ActorsList(Arrays.asList(firstActor.getName()));
     }
 
     public ActorsList getPrecedents(Actor actor) {
@@ -51,10 +41,6 @@ public class ActorsList {
 
     public int size() {
         return this.actors.size();
-    }
-
-    public boolean isEmpty() {
-        return this.actors.isEmpty();
     }
 
     public Actor getNext(Actor actor) {

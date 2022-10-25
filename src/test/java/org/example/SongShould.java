@@ -76,7 +76,8 @@ public class SongShould {
         SongPrinter printer = new SongPrinter();
         SongStructureChildrenSong structure = new SongStructureChildrenSong();
         ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse"));
-        Song song = new Song(animals, printer,structure);
+        SongComposer composer = new SongComposer(animals, structure);
+        Song song = new Song(composer,printer);
 
         //Act
         song.Play();
