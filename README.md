@@ -16,20 +16,3 @@ https://github.com/sleepyfox/code-dojo-39
 
 # Image credits
 Image by Egga. It shows an exemplary flip chart to facilitate the kata.
-
-
-
-NOTA: 
-
-La idea ahora sería tratar de refactorizar sustituyendo primitivas
-por objetos. Apliquemos Calistemia.
-
-Y además simplificar el codigo si es posible.
-
-Siguientes pasos, hacer TDD para evolucionarlo y para que pueda aceptar 
-todo tipo de animales.
-
-Ver si podemos aplicar patrones.
-
-Por último crear una canción con una estructura distinta y
-un programa que permita de forma interactiva generar canciones.
