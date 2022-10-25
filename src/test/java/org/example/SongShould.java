@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -75,38 +77,45 @@ public class SongShould {
 
     @Test
     void return_a_RN_when_an_empty_value_is_written() {
-        Song.print("");
+        Song song = new Song();
+        song.print("");
         assertEquals("\r\n", outContent.toString());
     }
 
     @Test
     void return_a_character_RN_when_a_character_is_written() {
-        Song.print("a");
+        Song song = new Song();
+        song.print("a");
         assertEquals("a\r\n", outContent.toString());
     }
 
     @Test
     void return_RN_when_a_newline_is_written() {
-        Song.print("\n");
+        Song song = new Song();
+        song.print("\n");
         assertEquals("\n\r\n", outContent.toString());
     }
 
     @Test
     void return_RN_when_a_phrase_with_a_new_line() {
-        Song.print("There was an old lady who swallowed a fly.\n");
+        Song song = new Song();
+        song.print("There was an old lady who swallowed a fly.\n");
         assertEquals("There was an old lady who swallowed a fly.\n\r\n", outContent.toString());
     }
 
     @Test
     void return_RN_when_a_phrase_with_two_new_lines() {
-        Song.print("I don't know why she swallowed a fly - perhaps she'll die!\n" + "\n");
+        Song song = new Song();
+        song.print("I don't know why she swallowed a fly - perhaps she'll die!\n" + "\n");
         assertEquals("I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n\r\n", outContent.toString());
     }
 
     @Test
     void return_RN_when_original_song_is_printed() {
-        Song.main(null);
+        List<String> animals = Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow");
+        Song song = new Song();
+        song.create(animals);
         assertEquals(expected_full_song + "\r\n", outContent.toString());
     }
 }
