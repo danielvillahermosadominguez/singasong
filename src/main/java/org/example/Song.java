@@ -1,27 +1,35 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 class Song {
+    private List<String> animals;
+    private List<String> randomPhrases;
 
-    public void create(List<String> animals) {
-        List<String> animalsInTheVerse = new ArrayList<>();
-        List<String> randomPhrases = new ArrayList<>();
+    public Song(List<String> animals) {
+        this.animals = animals;
+        createRandomPhrases();
+    }
+
+    private void createRandomPhrases() {
+        this.randomPhrases = new ArrayList<>();
         randomPhrases.add("");
         randomPhrases.add("That wriggled and wiggled and tickled inside her.\n");
         randomPhrases.add("How absurd to swallow a %s.\n");
         randomPhrases.add("Fancy that to swallow a %s!\n");
         randomPhrases.add("What a hog, to swallow a %s!\n");
         randomPhrases.add("I don't know how she swallowed a %s!\n");
+    }
 
+    public void create() {
+        List<String> animalsInTheVerse = new ArrayList<>();
         String song = "";
-        for (int i = 0; i < animals.size(); i++) {
+        for (int i = 0; i < animals.size() - 1; i++) {
             animalsInTheVerse.add(animals.get(i));
             song += createVerse(animalsInTheVerse, randomPhrases.get(i), animalsInTheVerse.size() == 1 ? "." : ";");
         }
-        song += getFinalVerse(Arrays.asList("horse"));
+        song += getFinalVerse(animals);
 
         print(song);
     }
@@ -50,12 +58,12 @@ class Song {
         return "There was an old lady who swallowed a " + animal + endLine + "\n";
     }
 
-    private static String getFinalVerse(List<String> animals) {
-        return "There was an old lady who swallowed a " + animals.get(0) + "...\n" +
+    private String getFinalVerse(List<String> animals) {
+        return "There was an old lady who swallowed a " + animals.get(animals.size() - 1) + "...\n" +
                 "...She's dead, of course!";
     }
 
-    public static void print(String song) {
+    public void print(String song) {
         System.out.println(song);
     }
 }
