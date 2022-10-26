@@ -1,6 +1,6 @@
-package org.example;
+package org.example.song;
 
-public class Phrase {
+public class Phrase extends Lyric {
     private final String text;
 
     public Phrase(String text) {
@@ -8,7 +8,7 @@ public class Phrase {
     }
 
     @Override
-    public String toString() {
+    public String convertToString() {
         return this.text;
     }
 }

@@ -1,5 +1,9 @@
-package org.example;
+package org.example.characterization;
 
+import org.example.actors.ActorsList;
+import org.example.childrensong.SongStructureChildrenSong;
+import org.example.composer.SongComposer;
+import org.example.song.Song;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -107,7 +111,7 @@ public class SongComposerShould {
 
         Song song = composer.create();
 
-        assertEquals(expected_full_song, song.toString());
+        assertEquals(expected_full_song, song.convertToString());
     }
 
     @Test
@@ -120,7 +124,7 @@ public class SongComposerShould {
 
         Song song = composer.create();
 
-        assertEquals(expectedSong, song.toString());
+        assertEquals(expectedSong, song.convertToString());
     }
 
     @Test
@@ -136,7 +140,7 @@ public class SongComposerShould {
 
         Song song = composer.create();
 
-        assertEquals(expectedSong, song.toString());
+        assertEquals(expectedSong, song.convertToString());
     }
 
     @Test
@@ -147,7 +151,7 @@ public class SongComposerShould {
 
         Song song = composer.create();
 
-        assertEquals(expectedSongWith8Animals, song.toString());
+        assertEquals(expectedSongWith8Animals, song.convertToString());
     }
 
     @Test
@@ -163,6 +167,6 @@ public class SongComposerShould {
 
         Song song = composer.create();
 
-        assertEquals(expectedSong, song.toString());
+        assertEquals(expectedSong, song.convertToString());
     }
 }

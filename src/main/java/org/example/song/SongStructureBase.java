@@ -1,4 +1,6 @@
-package org.example;
+package org.example.song;
+
+import org.example.song.SongStructure;
 
 import java.util.ArrayList;
 import java.util.List;

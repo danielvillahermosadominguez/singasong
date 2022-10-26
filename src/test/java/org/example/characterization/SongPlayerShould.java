@@ -1,5 +1,9 @@
-package org.example;
+package org.example.characterization;
 
+import org.example.player.SongPlayer;
+import org.example.song.Phrase;
+import org.example.song.Song;
+import org.example.song.Verse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

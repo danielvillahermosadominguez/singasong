@@ -1,4 +1,4 @@
-package org.example;
+package org.example.song;
 
 public interface SongStructure {
     String getFirstPhrase();

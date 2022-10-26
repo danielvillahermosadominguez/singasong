@@ -1,4 +1,4 @@
-package org.example;
+package org.example.actors;
 
 public class Actor {
     private final String name;

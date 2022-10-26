@@ -1,4 +1,11 @@
-package org.example;
+package org.example.composer;
+
+import org.example.actors.Actor;
+import org.example.actors.ActorsList;
+import org.example.song.Phrase;
+import org.example.song.Song;
+import org.example.song.SongStructure;
+import org.example.song.Verse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +20,7 @@ public class SongComposer {
         this.structure = structure;
     }
 
-    protected Song create() {
+    public Song create() {
         Song song = new Song();
         Actor actor = actors.getFirst();
         Actor lastActor = actors.getLast();

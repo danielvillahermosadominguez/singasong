@@ -1,5 +1,11 @@
 package org.example;
 
+import org.example.actors.ActorsList;
+import org.example.childrensong.SongStructureChildrenSong;
+import org.example.composer.SongComposer;
+import org.example.player.SongPlayer;
+import org.example.playlist.PlayList;
+
 import java.util.Arrays;
 
 import static java.lang.System.exit;

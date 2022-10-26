@@ -1,5 +1,10 @@
-package org.example;
+package org.example.characterization;
 
+import org.example.actors.ActorsList;
+import org.example.childrensong.SongStructureChildrenSong;
+import org.example.composer.SongComposer;
+import org.example.player.SongPlayer;
+import org.example.playlist.PlayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +15,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SongShould {
+public class PlayerListShould {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -70,18 +75,15 @@ public class SongShould {
     }
 
     @Test
-    void return_RN_when_original_song_is_printed() {
-        //Arrange
+    void return_RN_when_original_song_is_played() {
         SongPlayer printer = new SongPlayer();
         SongStructureChildrenSong structure = new SongStructureChildrenSong();
         ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse"));
         SongComposer composer = new SongComposer(animals, structure);
         PlayList song = new PlayList(composer,printer);
 
-        //Act
         song.Play();
 
-        //Assert
         assertEquals(expected_full_song + "\r\n", outContent.toString());
     }
 }

@@ -1,6 +1,10 @@
-package org.example;
+package org.example.playlist;
 
-class PlayList {
+import org.example.composer.SongComposer;
+import org.example.player.SongPlayer;
+import org.example.song.Song;
+
+public class PlayList {
     private final SongComposer composer;
     private final SongPlayer player;
 

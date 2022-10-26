@@ -1,4 +1,6 @@
-package org.example;
+package org.example.childrensong;
+
+import org.example.song.SongStructureBase;
 
 public class SongStructureChildrenSong extends SongStructureBase {
     @Override
