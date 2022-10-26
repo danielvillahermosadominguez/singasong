@@ -13,11 +13,11 @@ public class App {
             exit(0);
         }
 
-        SongPrinter printer = new SongPrinter();
+        SongPlayer printer = new SongPlayer();
         SongStructureChildrenSong structure = new SongStructureChildrenSong();
         ActorsList animals = new ActorsList(Arrays.asList(args));
         SongComposer composer = new SongComposer(animals, structure);
-        Song song = new Song(composer, printer);
+        PlayList song = new PlayList(composer, printer);
         song.Play();
     }
 }

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -73,11 +72,11 @@ public class SongShould {
     @Test
     void return_RN_when_original_song_is_printed() {
         //Arrange
-        SongPrinter printer = new SongPrinter();
+        SongPlayer printer = new SongPlayer();
         SongStructureChildrenSong structure = new SongStructureChildrenSong();
         ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse"));
         SongComposer composer = new SongComposer(animals, structure);
-        Song song = new Song(composer,printer);
+        PlayList song = new PlayList(composer,printer);
 
         //Act
         song.Play();

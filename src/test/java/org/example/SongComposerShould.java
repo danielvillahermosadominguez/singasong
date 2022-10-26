@@ -1,8 +1,6 @@
 package org.example;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledIfSystemProperties;
 
 import java.util.Arrays;
 
@@ -107,9 +105,9 @@ public class SongComposerShould {
         ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse"));
         SongComposer composer = new SongComposer(animals, structure);
 
-        String song = composer.create();
+        Song song = composer.create();
 
-        assertEquals(expected_full_song, song);
+        assertEquals(expected_full_song, song.toString());
     }
 
     @Test
@@ -120,9 +118,9 @@ public class SongComposerShould {
         ActorsList animals = new ActorsList(Arrays.asList("fly"));
         SongComposer composer = new SongComposer(animals, structure);
 
-        String song = composer.create();
+        Song song = composer.create();
 
-        assertEquals(expectedSong, song);
+        assertEquals(expectedSong, song.toString());
     }
 
     @Test
@@ -136,9 +134,9 @@ public class SongComposerShould {
         ActorsList animals = new ActorsList(Arrays.asList("fly", "cow"));
         SongComposer composer = new SongComposer(animals, structure);
 
-        String song = composer.create();
+        Song song = composer.create();
 
-        assertEquals(expectedSong, song);
+        assertEquals(expectedSong, song.toString());
     }
 
     @Test
@@ -147,9 +145,9 @@ public class SongComposerShould {
         ActorsList animals = new ActorsList(Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse","worm"));
         SongComposer composer = new SongComposer(animals, structure);
 
-        String song = composer.create();
+        Song song = composer.create();
 
-        assertEquals(expectedSongWith8Animals, song);
+        assertEquals(expectedSongWith8Animals, song.toString());
     }
 
     @Test
@@ -163,8 +161,8 @@ public class SongComposerShould {
         ActorsList animals = new ActorsList(Arrays.asList("tiger","zebra"));
         SongComposer composer = new SongComposer(animals, structure);
 
-        String song = composer.create();
+        Song song = composer.create();
 
-        assertEquals(expectedSong, song);
+        assertEquals(expectedSong, song.toString());
     }
 }

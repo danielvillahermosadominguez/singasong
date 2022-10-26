@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SongComposer {
 
@@ -12,41 +13,42 @@ public class SongComposer {
         this.structure = structure;
     }
 
-    protected String create() {
-        String song = "";
+    protected Song create() {
+        Song song = new Song();
         Actor actor = actors.getFirst();
         Actor lastActor = actors.getLast();
         ActorsList actorsInTheVerse = actors.getPrecedents(actor);
         while (!actor.is(lastActor)) {
-            song += createVerse(actorsInTheVerse);
+            song.addVerse(createVerse(actorsInTheVerse));
             actor = actors.getNext(actor);
             actorsInTheVerse = actors.getPrecedents(actor);
         }
 
-        song += createFinalVerse(actors);
+        song.addVerse(createFinalVerse(actors));
         return song;
     }
 
-    private String createVerse(ActorsList actors) {
-        String result = createFirstPhrase(actors);
+    private Verse createVerse(ActorsList actors) {
+        List<Phrase> phrases = new ArrayList<Phrase>();
+        phrases.add(createFirstPhrase(actors));
         Actor firstActor = actors.getFirst();
         Actor lastActor = actors.getLast();
-        if(actors.size() > 1) {
-            result += String.format(structure.getDifferentPhrase(), lastActor.getName());
+        if (actors.size() > 1) {
+            phrases.add(new Phrase(String.format(structure.getDifferentPhrase(), lastActor.getName())));
         }
-        result += createBody(actors);
-        result += String.format(structure.getEndOfVerse(), firstActor.getName());
-        return result;
+        phrases.addAll(createBody(actors));
+        phrases.add(new Phrase(String.format(structure.getEndOfVerse(), firstActor.getName())));
+        return new Verse(phrases);
     }
 
-    private String createBody(ActorsList actors) {
-        String result = "";
+    private List<Phrase> createBody(ActorsList actors) {
+        List<Phrase> result = new ArrayList<>();
         Actor actor = actors.getLast();
         Actor firstActor = actors.getFirst();
         int actorOrder = actors.size() - 1; //TODO: refactorize it. I don't know how to easily calculate it  without affect to the performance
         while (!actor.is(firstActor)) {
             Actor secondActor = actors.getPrecedent(actor);
-            result += createRefrain(actor, actorOrder, secondActor);
+            result.add(createRefrain(actor, actorOrder, secondActor));
             actor = secondActor;
             actorOrder--;
         }
@@ -54,19 +56,21 @@ public class SongComposer {
         return result;
     }
 
-    private String createRefrain(Actor actor, int actorOrder, Actor secondActor) {
+    private Phrase createRefrain(Actor actor, int actorOrder, Actor secondActor) {
         String endLine = actorOrder == 1 ? ";" : ",";
-        return String.format(structure.getRefrainOfTheVerse(), actor.getName(), secondActor.getName(), endLine);
+        return new Phrase(String.format(structure.getRefrainOfTheVerse(), actor.getName(), secondActor.getName(), endLine));
     }
 
-    private String createFirstPhrase(ActorsList actors) {
+    private Phrase createFirstPhrase(ActorsList actors) {
         Actor actor = actors.getLast();
         String endline = actors.size() == 1 ? "." : ";";
-        return String.format(structure.getFirstPhrase(), actor.getName(), endline);
+        return new Phrase(String.format(structure.getFirstPhrase(), actor.getName(), endline));
     }
 
-    private String createFinalVerse(ActorsList actors) {
+    private Verse createFinalVerse(ActorsList actors) {
+        List<Phrase> phrases = new ArrayList<>();
         Actor actor = actors.getLast();
-        return String.format(structure.getFinalPhrase(), actor.getName());
+        phrases.add(new Phrase(String.format(structure.getFinalPhrase(), actor.getName())));
+        return new Verse(phrases);
     }
 }

@@ -1,15 +1,26 @@
 package org.example;
 
-class Song {
-    private final SongComposer composer;
-    private final SongPrinter printer;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Song(SongComposer composer, SongPrinter printer) {
-        this.composer = composer;
-        this.printer = printer;
+public class Song {
+
+    private final List<Verse> verses;
+
+    public Song() {
+        this.verses = new ArrayList<>();
     }
 
-    public void Play() {
-        printer.print(composer.create());
+    @Override
+    public String toString() {
+        String result = "";
+        for (Verse verse:verses) {
+            result+= verse.toString();
+        }
+        return result;
+    }
+
+    public void addVerse(Verse verse) {
+        this.verses.add(verse);
     }
 }
